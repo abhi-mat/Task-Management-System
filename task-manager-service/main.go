@@ -34,7 +34,6 @@ func main() {
 	// initializing rabbitMq
 	err = rabbitmq.Init()
 	if err != nil {
-		fmt.Println("Hii")
 		fmt.Println(err)
 		os.Exit(0)
 	}
