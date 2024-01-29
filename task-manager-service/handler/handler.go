@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 	"task-manger-service/domain"
@@ -19,7 +18,6 @@ func CreateTask(c *gin.Context) {
 		})
 		return
 	}
-	fmt.Println(request)
 	if err := request.Validate(); err != nil {
 		c.JSON(http.StatusBadRequest, &domain.TaskResponse{
 			Status:    "something went wrong",

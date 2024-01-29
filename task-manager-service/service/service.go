@@ -10,7 +10,7 @@ import (
 	"task-manger-service/client/rabbitmq/consumer"
 	"task-manger-service/client/rabbitmq/publisher"
 	"task-manger-service/domain"
-	"task-manger-service/models"
+	"task-manger-service/repository"
 
 	"github.com/streadway/amqp"
 )
@@ -32,11 +32,11 @@ func CreateTask(ctx context.Context, task domain.Task) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	return models.CreateTask(ctx, task)
+	return repo.CreateTask(ctx, task)
 }
 
 func UpdateTask(ctx context.Context, task domain.Task) error {
-	return models.UpdateTask(ctx, task)
+	return repo.UpdateTask(ctx, task)
 }
 
 func GetTasks(ctx context.Context, userId int, sortBy string, isAdmin bool) ([]*domain.Task, error) {
@@ -50,10 +50,10 @@ func GetTasks(ctx context.Context, userId int, sortBy string, isAdmin bool) ([]*
 			return nil, errors.New("user is not admin")
 		}
 	}
-	return models.GetTasks(ctx, userId, sortBy, isAdmin)
+	return repo.GetTasks(ctx, userId, sortBy, isAdmin)
 }
 func MarkComplete(ctx context.Context, taskId int) error {
-	err := models.MarkComplete(ctx, taskId)
+	err := repo.MarkComplete(ctx, taskId)
 	if err != nil {
 		return err
 	}

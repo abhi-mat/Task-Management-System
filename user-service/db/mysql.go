@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"user-service/config"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/spf13/viper"
 )
 
 const (
@@ -28,7 +28,7 @@ func InitMySQL() error {
 }
 
 func getConnection() (*sql.DB, error) {
-	Client, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", config.DbUser, config.DbPassword, config.DbHost, config.DbPort, config.DbName))
+	Client, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", viper.GetString("database.userName"), viper.GetString("database.password"), viper.GetString("database.host"), viper.GetString("database.port"), viper.GetString("database.dbName")))
 	Client.SetMaxOpenConns(maxOpenConnection)
 	Client.SetMaxIdleConns(maxIdleConnection)
 	Client.SetConnMaxLifetime(maxConnectionTimeout)

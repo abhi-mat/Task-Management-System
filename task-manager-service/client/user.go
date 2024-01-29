@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"task-manger-service/config"
 	"task-manger-service/domain"
+
+	"github.com/spf13/viper"
 )
 
 func GetUser(userId int) (*domain.User, error) {
 
-	url := fmt.Sprintf("%s?userId=%d", config.UserServiceUrl, userId)
+	url := fmt.Sprintf("%s?userId=%d", viper.GetString("userService.getUser"), userId)
 	response, err := http.Get(url)
 	if err != nil {
 		return nil, err

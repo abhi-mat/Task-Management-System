@@ -3,8 +3,8 @@ package rabbitmq
 import (
 	"errors"
 	"fmt"
-	"task-manger-service/config"
 
+	"github.com/spf13/viper"
 	"github.com/streadway/amqp"
 )
 
@@ -27,7 +27,7 @@ func Init() error {
 
 func connect() error {
 	if conn == nil || conn.IsClosed() {
-		url := fmt.Sprintf("amqp://%s:%s@%s:%s/%s", config.RmqUser, config.RmqPass, config.RmqHost, config.RmqPort, config.RmqVhost)
+		url := fmt.Sprintf("amqp://%s:%s@%s:%s/%s", viper.GetString("rabbitMQ.user"), viper.GetString("rabbitMQ.pass"), viper.GetString("rabbitMQ.host"), viper.GetString("rabbitMQ.port"), viper.GetString("rabbitMQ.vHost"))
 		fmt.Println("rabbbitmq end-point- ", url)
 		var err error
 		conn, err = amqp.Dial(url)
