@@ -45,11 +45,11 @@ CREATE TABLE `users` (
 ```
 
 # Messaging Service Used for processing Events
-# RabbitMQ
+RabbitMQ
 
 # Admin's API
 
-# API to create User
+API to create User
 ```
 curl --location 'localhost:8080/user/admin/create' \
 --header 'Content-Type: application/json' \
@@ -62,13 +62,13 @@ curl --location 'localhost:8080/user/admin/create' \
 
 ```
 
-# API to Delete User
+API to Delete User
 ```
 curl --location --request DELETE 'localhost:8080/user/admin/delete?userId=3'
 
 ```
 
-# API to Create Task
+API to Create Task
 ```
 curl --location 'localhost:8081/task/create' \
 --header 'Content-Type: application/json' \
@@ -84,7 +84,7 @@ curl --location 'localhost:8081/task/create' \
 
 ```
 
-# API to Update Task
+API to Update Task
 ```
 curl --location --request PUT 'localhost:8081/task/admin/update' \
 --header 'Content-Type: application/json' \
@@ -99,7 +99,7 @@ curl --location --request PUT 'localhost:8081/task/admin/update' \
 
 # Default User's API
 
-# API to get User Detail
+API to get User Detail
 
 ```
 curl --location 'localhost:8080/user/get?userId=1'
@@ -107,14 +107,14 @@ curl --location 'localhost:8080/user/get?userId=1'
 ```
 
 
-# API to mark task completed 
+API to mark task completed 
 ```
 curl --location --request PUT 'localhost:8081/task/complete?taskId=1' \
 --data ''
 
 ```
 
-# API to get all the tasks related to admin or user 
+API to get all the tasks related to admin or user 
 Description : If isAdmin is true then this api will return all the task that is assigned by admin in descending sorting order by sortBy key else it will return all the task which is assigned to user with the requested user id.
 
 ```
