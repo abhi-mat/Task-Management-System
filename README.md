@@ -115,7 +115,7 @@ curl --location --request PUT 'localhost:8081/task/complete?taskId=1' \
 ```
 
 # API to get all the tasks related to admin or user 
-Description If is Admin is true the this api will return all the task that is assigned by admin in descending sorting order by sortBy key else it will return all the task which is assigned to user with the requested user id.
+Description : If isAdmin is true then this api will return all the task that is assigned by admin in descending sorting order by sortBy key else it will return all the task which is assigned to user with the requested user id.
 
 ```
 curl --location 'localhost:8081/task/get?isAdmin=true&userId=1&sortBy=dueDate'
